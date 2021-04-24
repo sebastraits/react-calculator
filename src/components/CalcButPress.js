@@ -1,40 +1,95 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import ResolverOp from "./ResolveOp";
 
+const CalcButPress = (
+  clase,
+  valor,
+  setValorVisorFirst,
+  valorVisorFirst,
+  setValorVisorOp,
+  valorVisorOp,
+  setValorVisorSecond,
+  valorVisorSecond
+) => {
+  let setValorActual, valorActual;
 
-const CalcButPress = (clase, valor, setValor, valorVisor, valorOperando) => {
+  if (valorVisorOp == null) {
+    setValorActual = setValorVisorFirst;
+    valorActual = valorVisorFirst;
+  } else {
+    setValorActual = setValorVisorSecond;
+    valorActual = valorVisorSecond;
+  }
+
   if (clase === "calcOperator") {
     if (valor === "AC") {
-      setValor("0");
+      setValorVisorFirst("0");
+      setValorVisorOp(null);
+      setValorVisorSecond(null);
       return;
     }
-    if (!valorOperando) {
-      setValor(`${valor}`);
+    if (valor === "=") {
+      if (valorVisorOp && valorVisorSecond) {
+        setValorVisorFirst(
+          `${ResolverOp(valorVisorFirst, valorVisorSecond, valorVisorOp)}`
+        );
+        setValorVisorOp(null);
+        setValorVisorSecond(null);
+        return;
+      } else {
+        return;
+      }
+    }
+
+    if (valor === "+/-") {
+      if (valorVisorSecond !== null) {
+        setValorVisorSecond(`${ResolverOp(null, valorVisorSecond, valor)}`);
+      } else {
+        setValorVisorFirst(`${ResolverOp(valorVisorFirst, null, valor)}`);
+      }
+      return;
+    }
+
+    if (valor === "%") {
+      setValorVisorFirst(
+        `${ResolverOp(valorVisorFirst, valorVisorSecond, valorVisorOp + valor)}`
+      );
+      setValorVisorOp(null);
+      setValorVisorSecond(null);
+      return;
+    }
+
+    if (!valorVisorOp) {
+      setValorVisorOp(`${valor}`);
     } else {
-      setValor(`${valor}`);
+      if (valorVisorSecond) {
+        setValorVisorFirst(
+          `${ResolverOp(valorVisorFirst, valorVisorSecond, valorVisorOp)}`
+        );
+        setValorVisorOp(`${valor}`);
+        setValorVisorSecond(null);
+      }
     }
   }
 
   if (clase === "calcButton" || clase === "calcCero") {
-    console.log(valorVisor, valor);
-
-    if (valorVisor === "0") {
+    if (valorActual === "0" || valorActual === null) {
       if (valor === "0") {
-        setValor("0");
+        setValorActual("0");
       } else {
         if (valor === ".") {
-          setValor(`${valorVisor}${valor}`);
+          setValorActual(`${valorActual}${valor}`);
         } else {
-          setValor(`${valor}`);
+          setValorActual(`${valor}`);
         }
       }
     } else {
       if (valor === ".") {
-        console.log([...valorVisor].filter((x) => x === ".").length);
-        if ([...valorVisor].filter((x) => x === ".").length === 0) {
-          setValor(`${valorVisor}${valor}`);
+        if ([...valorActual].filter((x) => x === ".").length === 0) {
+          setValorActual(`${valorActual}${valor}`);
         }
       } else {
-        setValor(`${valorVisor}${valor}`);
+        setValorActual(`${valorActual}${valor}`);
       }
     }
   }

@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CalcButPress from "./CalcButPress";
 
-const buttonPress = (clase, valor, setValor, valorVisor, valorOperando) => {
-    let procesar = CalcButPress(clase, valor, setValor, valorVisor, valorOperando);
-  };
-
-const CalcButton = ({ clase, valor, setValor, valorVisor, valorOperando }) => {
-  
-    
-   
-
+const CalcButton = ({
+  clase,
+  valor,
+  setValorVisorFirst,
+  valorVisorFirst,
+  setValorVisorOp,
+  valorVisorOp,
+  setValorVisorSecond,
+  valorVisorSecond,
+}) => {
   return (
     <div
       className={clase}
       onClick={() => {
-        buttonPress(clase, valor, setValor, valorVisor, valorOperando);
+        CalcButPress(
+          clase,
+          valor,
+          setValorVisorFirst,
+          valorVisorFirst,
+          setValorVisorOp,
+          valorVisorOp,
+          setValorVisorSecond,
+          valorVisorSecond
+        );
       }}
     >
       {valor}

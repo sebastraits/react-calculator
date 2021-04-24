@@ -30,7 +30,7 @@
 
 .calculatorBody {
   display: flex;
-  width: 80%;
+  width: 60%;
   background-color: rgb(0, 0, 0);
   flex-wrap: wrap;
   justify-content: space-around;
@@ -38,7 +38,7 @@
   /* text-align: center; */
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 11vh;
+  font-size: 9vh;
    padding: 1vh;
 }
 
@@ -46,7 +46,7 @@
   flex-basis: 98%;
   background-color: grey;
   color: azure;
-  font-size: 13vh;
+  font-size: 11vh;
   text-align: right;
   padding-right: 5vh;
  }
