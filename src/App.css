@@ -30,15 +30,16 @@
 
 .calculatorBody {
   display: flex;
-  width: 60%;
+  width: 50%;
   background-color: rgb(0, 0, 0);
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  margin: auto;
   align-content: space-around;
   /* text-align: center; */
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 9vh;
+  font-size: 8vh;
    padding: 1vh;
    user-select: -moz-none;
 }
@@ -47,7 +48,7 @@
   flex-basis: 98%;
   background-color: grey;
   color: azure;
-  font-size: 11vh;
+  font-size: 10vh;
   text-align: right;
   padding-right: 5vh;
  }
@@ -67,6 +68,7 @@ user-select: none;
 
 .calcButton:hover, .calcOperator:hover, .calcCero:hover {
   opacity: 80%;
+ 
 }
 
 .calcOperator {

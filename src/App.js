@@ -11,17 +11,17 @@ function App() {
     button = "calcButton",
     operator = "calcOperator";
 
-  useEffect(() => {
-    if (valorVisorFirst === "Op.inválida"){
+    useEffect(() => {
+    if (valorVisorFirst === "Op.inválida") {
       setTimeout(() => {
-      setValorVisorFirst("0");
-      setValorVisorOp(null)
-      setValorVisorSecond(null)
+        setValorVisorFirst("0");
+        setValorVisorOp(null);
+        setValorVisorSecond(null);
       }, 3000);
     }
   }, [valorVisorFirst]);
 
-    return (
+  return (
     <div className="App">
       <header className="App-header"></header>
 
@@ -37,8 +37,6 @@ function App() {
           valorVisorOp={valorVisorOp}
           setValorVisorSecond={setValorVisorSecond}
           valorVisorSecond={valorVisorSecond}
-
-
         />
         <CalcButton
           clase={operator}
